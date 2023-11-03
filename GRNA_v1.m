@@ -15,16 +15,16 @@ GetSecs; WaitSecs(0); % pre-load timing function for precision timing
 Screen('Preference', 'SkipSyncTests', 1);
 
 % ---------- Configuration ----------
-expName     = 'GRNA';    % experiment name for data files
-expData     = 'results'; % experiment data folder name
-bgColor     = 192;       % gray
-fixlen      = 15;        % fixation length
-fixwidth    = 5;         % fixation width 
+expName      = 'GRNA';    % experiment name for data files
+expData      = 'results'; % experiment data folder name
+bgColor      = 192;       % gray
+fixlen       = 15;        % fixation length
+fixwidth     = 5;         % fixation width 
 
 % stimsize
+stimwidth    = 640;       % monitor_resolution / 3 
 stimheight   = 360;
-stimwidth    = 640;
-stimdist     = 450;
+stimdist     = stimwidth / 1.5; 
 
 inputDelay   = 0.5;
 ITI          = 0.5;
@@ -39,7 +39,7 @@ Atag = input('age: ', 's');         % age
 % key response counterbalancing
 if mod(Ptag, 2) == 0 % Ptag is even
     Ctag = 2;
-    noticeExp = imread('resources\instC1.png','png');
+    noticeExp = imread('resources\instC2.png','png');
 else                 % Ptag is odd
     Ctag = 1;
     noticeExp = imread('resources\instC1.png','png');
@@ -120,7 +120,7 @@ for i = 1:trialN
     end
 end
 
-blockN    = 3;                      % 96 trials per blcok
+blockN    = 3;                      %  64 trials per blcok
 blockSize = trialN / blockN;
 
 % instruction
@@ -188,7 +188,6 @@ for p = 1:6
             break
         end
     end
-
     Screen('DrawLine', w, 0, cx-fixlen, cy, cx+fixlen, cy, fixwidth);
     Screen('DrawLine', w, 0, cx, cy-fixlen, cx, cy+fixlen, fixwidth);
     Screen('Flip', w);
@@ -210,7 +209,7 @@ end
 Screen('Flip', w); % clear screen
 WaitSecs(inputDelay);
 
-% ---------- Start trials ----------
+% ---------- Main trials ----------
 blockTimer  = GetSecs;
 
 for T = 1:trialN
