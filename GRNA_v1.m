@@ -56,10 +56,10 @@ practice1 = imread('resources\stimuli\practice1.png','png');
 practice2 = imread('resources\stimuli\practice2.png','png');
 practice3 = imread('resources\stimuli\practice3.png','png');
 
-env1_bias = condMat{1, 7}{1};
-env2_bias = condMat{1, 8}{1};
-env3_bias = condMat{1, 9}{1};
-env4_bias = condMat{1, 10}{1};
+env1_bias = condMat{Ptag, 7}{1};
+env2_bias = condMat{Ptag, 8}{1};
+env3_bias = condMat{Ptag, 9}{1};
+env4_bias = condMat{Ptag, 10}{1};
 
 % ---------- Key Setup ----------
 goKey       = KbName('space'); % response key to proceed
